@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eren Bozkurt | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --surface: #111c2f;
+      --surface-2: #0c1526;
+      --card: #121f36;
+      --text: #e8eef8;
+      --muted: #9aa9c2;
+      --accent: #4aa3ff;
+      --accent-2: #7bdff2;
+      --border: rgba(148, 163, 184, 0.22);
+      --shadow: 0 18px 40px rgba(8, 14, 30, 0.45);
+      --radius: 14px;
+      --transition: 0.2s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(74, 163, 255, 0.18), transparent 38%),
+        radial-gradient(circle at 80% 0%, rgba(123, 223, 242, 0.12), transparent 40%),
+        linear-gradient(140deg, var(--bg), var(--surface-2));
+      min-height: 100vh;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15, 23, 42, 0.86);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      width: 100%;
+      padding: 16px 2.5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+      cursor: pointer;
+    }
+
+    .nav-logo-pill {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 18px rgba(74, 163, 255, 0.25);
+      display: grid;
+      place-items: center;
+      color: #0b1324;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+      border-color: var(--border);
+      background: rgba(148, 163, 184, 0.12);
+    }
+
+    .nav-links a.active::after {
+      content: "";
+      position: absolute;
+      inset: auto 20% -6px 20%;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    main {
+      width: 100%;
+      padding: 32px 2.5vw 72px;
+    }
+
+    .page {
+      display: none;
+      animation: fadeInUp 0.55s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 12px;
+      border-radius: 10px;
+      background: rgba(74, 163, 255, 0.12);
+      color: var(--accent-2);
+      font-weight: 600;
+      border: 1px solid rgba(74, 163, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 11px;
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #ecfdf5;
+      border: 1px solid #bbf7d0;
+      color: #15803d;
+      font-size: 11px;
+      margin-top: 12px;
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    h1 {
+      margin: 14px 0 12px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .text-gradient {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 660px;
+      border-left: 3px solid var(--accent);
+      padding-left: 14px;
+    }
+
+    .cta-row {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      border-radius: 12px;
+      font-weight: 700;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      cursor: pointer;
+      font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    }
+
+    .btn.primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      color: #0b1324;
+      box-shadow: 0 12px 26px rgba(74, 163, 255, 0.35);
+    }
+
+    .btn.secondary {
+      border-color: var(--border);
+      color: var(--text);
+      background: rgba(148, 163, 184, 0.08);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(8, 14, 30, 0.4);
+    }
+
+    .hero-visual {
+      position: relative;
+      height: 100%;
+      min-height: 340px;
+      display: grid;
+      place-items: center;
+    }
+
+    .glass {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      width: 100%;
+      max-width: 440px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass:before, .glass:after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.35;
+      filter: blur(10px);
+    }
+
+    .glass:before {
+      width: 180px;
+      height: 180px;
+      background: rgba(74, 163, 255, 0.45);
+      top: -70px;
+      right: -40px;
+    }
+
+    .glass:after {
+      width: 160px;
+      height: 160px;
+      background: rgba(123, 223, 242, 0.35);
+      bottom: -60px;
+      left: -40px;
+    }
+
+    .glass-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 12px;
+    }
+
+    .metrics {
+      display: grid;
+      gap: 12px;
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+    }
+
+    .metric strong {
+      color: var(--text);
+      font-size: 18px;
+    }
+
+    .tagline {
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 11px;
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+    }
+
+    .section {
+      display: grid;
+      gap: 18px;
+      margin-bottom: 36px;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .section p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.columns-3 {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .grid.columns-2 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(74, 163, 255, 0.08), transparent 55%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(74, 163, 255, 0.45);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 19px;
+    }
+
+    .card small {
+      color: var(--muted);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 12px;
+      background: rgba(74, 163, 255, 0.12);
+      color: var(--accent-2);
+      border: 1px solid rgba(74, 163, 255, 0.35);
+      font-weight: 600;
+      font-size: 12px;
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: grid;
+      grid-template-rows: 160px auto;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(74, 163, 255, 0.45);
+    }
+
+    .gallery-thumb {
+      background:
+        linear-gradient(135deg, rgba(74, 163, 255, 0.12), transparent),
+        var(--surface-2);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .gallery-body {
+      padding: 12px 14px 14px;
+      display: grid;
+      gap: 6px;
+    }
+
+    .gallery-body small {
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+    }
+
+    .gallery-body h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .gallery-body p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .image-frame {
+      padding: 14px;
+      background: linear-gradient(145deg, rgba(74, 163, 255, 0.12), transparent);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+    }
+
+    .image-placeholder {
+      background: var(--surface-2);
+      border-radius: 16px;
+      height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 1rem;
+      border: 1px dashed var(--border);
+      font-family: "IBM Plex Mono", "IBM Plex Sans", monospace;
+    }
+
+    .section-heading {
+      font-size: 26px;
+      margin: 10px 0;
+    }
+
+    .section-subtext {
+      color: var(--muted);
+      margin-bottom: 12px;
+      max-width: 760px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .timeline-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(74, 163, 255, 0.18);
+      margin-top: 6px;
+    }
+
+    .timeline-content {
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+    }
+
+    .faq {
+      max-width: 860px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(74, 163, 255, 0.45);
+    }
+
+    .faq-question {
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .faq-question span:last-child {
+      color: var(--accent);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .faq-answer {
+      padding: 0 16px 16px 16px;
+      display: none;
+      color: var(--muted);
+    }
+
+    .faq-item.open .faq-question {
+      background: rgba(74, 163, 255, 0.1);
+    }
+
+    .faq-item.open .faq-question span:last-child {
+      transform: rotate(180deg);
+    }
+
+    .contact {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+
+    footer {
+      width: 100%;
+      padding: 24px 2.5vw 40px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .grid > * {
+      animation: rise 0.5s ease both;
+    }
+
+    .grid > *:nth-child(1) { animation-delay: 0.04s; }
+    .grid > *:nth-child(2) { animation-delay: 0.08s; }
+    .grid > *:nth-child(3) { animation-delay: 0.12s; }
+    .grid > *:nth-child(4) { animation-delay: 0.16s; }
+    .grid > *:nth-child(5) { animation-delay: 0.2s; }
+    .grid > *:nth-child(6) { animation-delay: 0.24s; }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      main {
+        padding-top: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding: 12px 3vw;
+      }
+      main {
+        padding: 24px 3vw 64px;
+      }
+      .hero {
+        gap: 28px;
+        margin-bottom: 40px;
+      }
+      h1 {
+        font-size: clamp(30px, 6vw, 44px);
+      }
+      .lead {
+        font-size: 16px;
+      }
+      .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+      .gallery-item {
+        grid-template-rows: 150px auto;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-logo span {
+        display: none;
+      }
+      .card {
+        padding: 16px;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .btn.secondary {
+        background: rgba(148, 163, 184, 0.12);
+      }
+      .gallery-item {
+        grid-template-rows: 160px auto;
+      }
+      .gallery-body p {
+        font-size: 13px;
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .hero {
+        gap: 64px;
+      }
+      .gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .grid.columns-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .nav,
+      main,
+      footer {
+        padding-left: 2vw;
+        padding-right: 2vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-logo" onclick="showPage('start')">
+        <div class="nav-logo-pill">EB</div>
+        <span>Eren Bozkurt</span>
+      </div>
+      <nav class="nav-links">
+        <a data-page="start" class="active">Start</a>
+        <a data-page="profil">Profil</a>
+        <a data-page="projekte">Projekte</a>
+        <a data-page="skills">Skills</a>
+        <a data-page="faq">FAQ</a>
+        <a data-page="kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="page-start" class="page active">
+      <div class="hero">
+        <div>
+          <span class="eyebrow">Gebäudetechnikplaner EFZ i.A.</span>
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            Lehrstelle gesucht
+          </div>
+          <h1>Eren Bozkurt – <span class="text-gradient">Technik mit Blick aufs Ganze</span></h1>
+          <p class="lead">Sorgfältige Planung, klare Kommunikation und präzise Umsetzung: Ich suche eine Lehrstelle als Gebäudetechnikplaner EFZ und möchte meine Energie in zukunftsfähige Gebäude stecken.</p>
+          <div class="cta-row">
+            <a class="btn primary" data-page-link="kontakt">Kontakt aufnehmen</a>
+            <a class="btn secondary" data-page-link="projekte">Portfolio ansehen</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="glass floating">
+            <div class="glass-content">
+              <div class="tagline">Arbeitsweise</div>
+              <div class="metrics">
+                <div class="metric">
+                  <div>Planung</div>
+                  <strong>vorausschauend</strong>
+                </div>
+                <div class="metric">
+                  <div>Software</div>
+                  <strong>AutoCAD, BIM</strong>
+                </div>
+                <div class="metric">
+                  <div>Fokus</div>
+                  <strong>Energie & Komfort</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-heading">Was dich hier erwartet</h2>
+      <p class="section-subtext">Ein klar gegliederter Überblick über meine Motivation, Projekte und den Weg in die Gebäudetechnik.</p>
+      <div class="grid columns-3">
+        <div class="card" onclick="showPage('projekte')" style="cursor:pointer;">
+          <small>01 • Einblick</small>
+          <h3>Projekte & Arbeitsproben</h3>
+          <p>Von Lüftungskonzepten bis zum Gebäude-Energie-Check – dokumentiert und nachvollziehbar.</p>
+        </div>
+        <div class="card" onclick="showPage('skills')" style="cursor:pointer;">
+          <small>02 • Haltung</small>
+          <h3>Stärken & Arbeitsweise</h3>
+          <p>Wie ich plane, abstimme und welche Tools ich bereits sicher einsetze.</p>
+        </div>
+        <div class="card" onclick="showPage('profil')" style="cursor:pointer;">
+          <small>03 • Persönlich</small>
+          <h3>Profil & Kontakt</h3>
+          <p>Wer ich bin, wie man mich erreicht und warum ich Verantwortung übernehmen will.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-profil" class="page">
+      <div class="section">
+        <h1>Über mich</h1>
+        <p class="section-subtext">Technikbegeistert, zuverlässig und neugierig auf jede Baustelle, bei der ich mitdenken darf.</p>
+      </div>
+      <div class="grid columns-2" style="margin-bottom:28px;">
+        <div class="card">
+          <small>Kurzprofil</small>
+          <h3>Sorgfältig planen, klar kommunizieren</h3>
+          <p>Ich verbinde technisches Interesse mit Verlässlichkeit. Skizzen, CAD-Modelle und Dokumentation halte ich sauber nach und stimme Änderungen früh ab. Mathe und Naturwissenschaften sind meine Basis – Praxis und Feedback bringen mich weiter.</p>
+        </div>
+        <div class="image-frame">
+          <div class="image-placeholder">Platzhalter für Portrait oder Baustellen-Foto</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px;">
+        <h3>Direkte Angaben</h3>
+        <div class="badges">
+          <span class="pill">Zuverlässig</span>
+          <span class="pill">Teamplayer</span>
+          <span class="pill">Lernbereit</span>
+        </div>
+        <p style="margin-top:12px;"><strong>E-Mail:</strong> <a href="mailto:eren.bozkurt@mail.com" style="color: var(--accent); text-decoration: none;">eren.bozkurt@mail.com</a></p>
+        <p><strong>Telefon:</strong> +41 79 000 00 00</p>
+        <p><strong>Ort:</strong> Schweiz, offen für Lehrstellen in der Region</p>
+      </div>
+
+      <div class="section">
+        <h2 class="section-heading">Kontakt (Demo)</h2>
+        <div class="contact">
+          <div class="card">
+            <small>Warum ich?</small>
+            <h3>Verbindlich und lernhungrig</h3>
+            <p>Ich halte Deadlines ein, frage nach, bevor ich entscheide, und dokumentiere sauber. Feedback sehe ich als Chance, schneller besser zu werden.</p>
+          </div>
+          <div class="card">
+            <small>Kontakt</small>
+            <h3>Direkt erreichbar</h3>
+            <p><strong>E-Mail:</strong> <a href="mailto:eren.bozkurt@mail.com" style="color: var(--accent); text-decoration: none;">eren.bozkurt@mail.com</a></p>
+            <p><strong>Telefon:</strong> +41 79 000 00 00</p>
+            <p><strong>Ort:</strong> Schweiz, offen für Lehrstellen in der Region</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-projekte" class="page">
+      <div class="section">
+        <h1>Projekte & Arbeitsproben</h1>
+        <p class="section-subtext">Auszüge aus Übungs- und Schulprojekten. Hier stehen visuelle Eindrücke im Fokus.</p>
+      </div>
+      <div class="gallery">
+        <article class="gallery-item">
+          <div class="gallery-thumb">Bild 01</div>
+          <div class="gallery-body">
+            <small>Lüftung</small>
+            <h3>Mehrfamilienhaus Konzept</h3>
+            <p>CAD-Grundriss und Luftführung.</p>
+          </div>
+        </article>
+        <article class="gallery-item">
+          <div class="gallery-thumb">Bild 02</div>
+          <div class="gallery-body">
+            <small>Heizung</small>
+            <h3>Heizlast & Rohrnetz</h3>
+            <p>Dimensionierung und Variantenvergleich.</p>
+          </div>
+        </article>
+        <article class="gallery-item">
+          <div class="gallery-thumb">Bild 03</div>
+          <div class="gallery-body">
+            <small>Sanitär</small>
+            <h3>Trinkwasserkonzept EFH</h3>
+            <p>Verteiler, Materialwahl, Hygiene.</p>
+          </div>
+        </article>
+        <article class="gallery-item">
+          <div class="gallery-thumb">Bild 04</div>
+          <div class="gallery-body">
+            <small>Energie</small>
+            <h3>Gebäude-Energie-Check</h3>
+            <p>Dämmung, Heizsystem, Effizienz.</p>
+          </div>
+        </article>
+        <article class="gallery-item">
+          <div class="gallery-thumb">Bild 05</div>
+          <div class="gallery-body">
+            <small>Planung</small>
+            <h3>Layer & Detailplanung</h3>
+            <p>Saubere CAD-Struktur.</p>
+          </div>
+        </article>
+        <article class="gallery-item">
+          <div class="gallery-thumb">Bild 06</div>
+          <div class="gallery-body">
+            <small>Baustelle</small>
+            <h3>Praxis-Einblick</h3>
+            <p>Koordination und Umsetzung.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="page-skills" class="page">
+      <div class="section">
+        <h1>Stärken & Skills</h1>
+        <p class="section-subtext">Wie ich arbeite, welche Tools ich nutze und was mich antreibt.</p>
+      </div>
+      <div class="grid columns-3" style="margin-bottom:28px;">
+        <div class="card">
+          <small>Technik</small>
+          <h3>Gebäudetechnik verstehen</h3>
+          <p>Grundwissen in HLK-Systemen, Wärmeerzeugung und Energieeffizienz. Ich arbeite mich schnell in Normen ein.</p>
+        </div>
+        <div class="card">
+          <small>Methodik</small>
+          <h3>Saubere Planung</h3>
+          <p>Aufmass, Skizzen, CAD-Modelle und Dokumentation strukturiere ich klar und versioniere ordentlich.</p>
+        </div>
+        <div class="card">
+          <small>Team</small>
+          <h3>Zuverlässige Zusammenarbeit</h3>
+          <p>Ich stimme mich früh ab, halte Zusagen und nehme Feedback als Chance, besser zu werden.</p>
+        </div>
+      </div>
+
+      <h2 class="section-heading">Laufbahn & Engagement</h2>
+      <p class="section-subtext">Stationen, die zeigen, wie ich mich auf die Lehrstelle als Gebäudetechnikplaner EFZ vorbereite.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="pill">2024</div>
+            <h3>Praktische Einblicke</h3>
+            <p>Kurze Praktika auf Baustellen und im Planungsbüro, um Abläufe, Sicherheit und Koordination kennenzulernen.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="pill">2023–2024</div>
+            <h3>Vorbereitungskurse & CAD</h3>
+            <p>Grundlagen in AutoCAD und erste BIM-Berührungspunkte. Fokus auf Genauigkeit und sauberen Layer-Aufbau.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="pill">Schule</div>
+            <h3>Technisches Interesse vertieft</h3>
+            <p>Mathematik und Naturwissenschaften als Lieblingsfächer, ergänzt durch handwerkliche Projekte und Teamarbeiten.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-faq" class="page">
+      <div class="section">
+        <h1>FAQ – Häufige Fragen</h1>
+        <p class="section-subtext">Kurze Antworten auf typische Fragen zu meiner Arbeitsweise und Motivation.</p>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <div class="faq-question">Warum Gebäudetechnik? <span>▼</span></div>
+          <div class="faq-answer">Ich will an Lösungen arbeiten, die Energie sparen, Komfort erhöhen und langfristig Bestand haben. Technik und Nachhaltigkeit passen hier perfekt zusammen.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Wie gehst du an neue Projekte? <span>▼</span></div>
+          <div class="faq-answer">Mit einem klaren Ablauf: Anforderungen klären, Skizzen erstellen, in CAD überführen, Varianten vergleichen, Feedback einholen und sauber dokumentieren.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Welche Software nutzt du? <span>▼</span></div>
+          <div class="faq-answer">AutoCAD für Zeichnungen, erste Schritte in BIM-Workflows sowie Office/Excel für Berechnungen und Reporting.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Wie schnell lernst du neue Tools? <span>▼</span></div>
+          <div class="faq-answer">Schnell: Ich teste an kleinen Beispielen, dokumentiere Shortcuts/Workflows und frage aktiv nach Best Practices im Team.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="page-kontakt" class="page">
+      <div class="section">
+        <h1>Kontakt</h1>
+        <p class="section-subtext">Lust auf ein Kennenlerngespräch? Ich freue mich, meine Motivation persönlich zu zeigen.</p>
+      </div>
+      <div class="contact">
+        <div class="card">
+          <h3>Schneller Überblick</h3>
+          <p><strong>E-Mail:</strong> <a href="mailto:eren.bozkurt@mail.com" style="color: var(--accent); text-decoration: none;">eren.bozkurt@mail.com</a></p>
+          <p><strong>Telefon:</strong> +41 79 000 00 00</p>
+          <p><strong>Ort:</strong> Schweiz, offen für Lehrstellen in der Region</p>
+          <div class="badges">
+            <span class="pill">Pünktlich</span>
+            <span class="pill">Teamplayer</span>
+            <span class="pill">Lernbereit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><strong>Eren Bozkurt</strong> – angehender Gebäudetechnikplaner EFZ. Bereit für Verantwortung und Lernkurven. © <span id="year"></span></div>
+    <div class="badges">
+      <span class="pill">AutoCAD Basics</span>
+      <span class="pill">BIM Interesse</span>
+      <span class="pill">Sicherheit</span>
+      <span class="pill">Nachhaltigkeit</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const pages = document.querySelectorAll('.page');
+
+    function showPage(pageId) {
+      pages.forEach((p) => p.classList.remove('active'));
+      const target = document.getElementById('page-' + pageId);
+      if (target) target.classList.add('active');
+
+      navLinks.forEach((link) => {
+        link.classList.toggle('active', link.dataset.page === pageId);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    navLinks.forEach((link) => {
+      link.addEventListener('click', () => showPage(link.dataset.page));
+    });
+
+    document.querySelectorAll('[data-page-link]').forEach((btn) => {
+      btn.addEventListener('click', () => showPage(btn.dataset.pageLink));
+    });
+
+    document.querySelectorAll('.faq-item').forEach((item) => {
+      item.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        if (!isOpen) {
+          item.classList.add('open');
+          item.querySelector('.faq-answer').style.display = 'block';
+        } else {
+          item.classList.remove('open');
+          item.querySelector('.faq-answer').style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
