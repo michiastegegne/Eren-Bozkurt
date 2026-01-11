@@ -18,8 +18,26 @@
       --accent-2: #6acb87;
       --border: rgba(15, 31, 22, 0.14);
       --shadow: 0 10px 24px rgba(15, 31, 22, 0.08);
+      --grid: rgba(15, 31, 22, 0.04);
+      --header: rgba(246, 249, 247, 0.9);
       --radius: 14px;
       --transition: 0.2s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1510;
+        --surface: #101b15;
+        --surface-2: #14211a;
+        --text: #e7f1ea;
+        --muted: #a9b9af;
+        --accent: #5cc78a;
+        --accent-2: #9be1b8;
+        --border: rgba(231, 241, 234, 0.12);
+        --shadow: 0 12px 26px rgba(4, 8, 6, 0.4);
+        --grid: rgba(231, 241, 234, 0.04);
+        --header: rgba(11, 21, 16, 0.9);
+      }
     }
 
     * {
@@ -32,8 +50,8 @@
       font-family: "Space Grotesk", system-ui, -apple-system, sans-serif;
       color: var(--text);
       background:
-        linear-gradient(0deg, rgba(15, 31, 22, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(15, 31, 22, 0.04) 1px, transparent 1px),
+        linear-gradient(0deg, var(--grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid) 1px, transparent 1px),
         var(--bg);
       background-size: 26px 26px;
       min-height: 100vh;
@@ -47,7 +65,7 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(246, 249, 247, 0.9);
+      background: var(--header);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--border);
